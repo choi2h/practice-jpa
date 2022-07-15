@@ -15,8 +15,10 @@ public class ItemRepository {
 
     public void save(Item item) {
         if(item.getId() == null) {
+            //새로운 Item으로 persist
             em.persist(item);
         } else {
+            //쓸 일 거의 없음
             em.merge(item);
         }
     }
