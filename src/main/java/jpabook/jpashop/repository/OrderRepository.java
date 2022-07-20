@@ -67,4 +67,18 @@ public class OrderRepository {
         ).getResultList();
 
     }
+
+    /*
+        database의 distinct는 모든 속성의 값이 같아야 distinct되지만
+        JPA에서 자체적으로 PK값이 같은 값이면 중복을 제거해준다.
+     */
+    public List<Order> findAllWithItem() {
+        return em.createQuery(
+                "select distinct o from Order o" +
+                        " join fetch o.member m" +
+                        " join fetch o.delivery d" +
+                        " join fetch o.orderItems oi" +
+                        " join fetch oi.item i", Order.class)
+                .getResultList();
+    }
 }
