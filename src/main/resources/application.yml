@@ -15,6 +15,7 @@ spring:
         database-platform: org.hibernate.dialect.H2Dialect
         ## 아래 옵션 왠만하면 키는게 좋음
         default_batch_fetch_size: 100
+#    open-in-view: false
 
 #  thymeleaf:
 #    prefix: classpath:src/main/resources/
